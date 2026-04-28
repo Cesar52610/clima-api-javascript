@@ -1,4 +1,4 @@
-const apiKey = 'SUA_CHAVE_AQUI'; // Pega de graça no openweathermap.org
+const apiKey = '1a4e1ef5876289e02380161d464f2421'; // Pega de graça no openweathermap.org
 
 async function buscarClima() {
     const cidade = document.getElementById('cidade').value;
