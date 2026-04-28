@@ -1,29 +1,30 @@
-const apiKey = 'f2e80ca6bec842e973ef77bf5dcf3695'; // Pega de graça no openweathermap.org
+function buscarClima() {
+    const cidade = document.getElementById("cidade").value;
+    const apiKey = "f2e80ca6bec842e973ef77bf5dcf3695";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`;
 
-async function buscarClima() {
-    const cidade = document.getElementById('cidade').value;
-    const resultado = document.getElementById('resultado');
-    
-    if (!cidade) {
-        resultado.innerHTML = 'Digite uma cidade!';
+    if (cidade === "") {
+        document.getElementById("resultado").innerHTML = "Digite uma cidade!";
         return;
     }
 
-    try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`;
-        const response = await fetch(url);
-        const data = await response.json();
+    fetch(url)
+       .then(response => {
+            if (!response.ok) {
+                throw new Error("Cidade não encontrada");
+            }
+            return response.json();
+        })
+       .then(data => {
+            const temperatura = data.main.temp;
+            const descricao = data.weather[0].description;
+            const nomeCidade = data.name;
 
-        if (data.cod === 200) {
-            resultado.innerHTML = `
-                <h2>${data.name}</h2>
-                <p>Temperatura: ${data.main.temp}°C</p>
-                <p>Sensação: ${data.main.feels_like}°C</p>
-                <p>Clima: ${data.weather[0].description}</p>
-            `;
-        } else {
-            resultado.innerHTML = 'Cidade não encontrada!';
-        }
-    } catch (error) {
-        resultado.innerHTML = 'Erro ao buscar dados';
-    }
+            document.getElementById("resultado").innerHTML =
+                `${nomeCidade}: ${temperatura}°C, ${descricao}`;
+        })
+       .catch(error => {
+            document.getElementById("resultado").innerHTML =
+                `Erro: ${error.message}`;
+        });
+}
