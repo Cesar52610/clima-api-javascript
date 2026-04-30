@@ -133,3 +133,36 @@ lottie-player {
   font-size: 1.5rem;
   font-weight: 700;
 }
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.stars.active {
+  opacity: 1;
+}
+
+.star {
+  position: absolute;
+  background: #FFF;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Garante que o conteúdo fique na frente das estrelas */
+.container {
+  position: relative;
+  z-index: 1;
+}
