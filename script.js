@@ -1,7 +1,6 @@
 function gerarEstrelas(quantidade) {
     const starsContainer = document.getElementById('stars');
     starsContainer.innerHTML = '';
-
     for (let i = 0; i < quantidade; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
@@ -20,7 +19,6 @@ function buscarClima() {
     const cidade = document.getElementById("cidade").value;
     const apiKey = "f2e80ca6bec842e973ef77bf5dcf3695";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}&units=metric&lang=pt_br`;
-
     const card = document.getElementById("resultado");
 
     if (cidade === "") {
@@ -29,11 +27,11 @@ function buscarClima() {
     }
 
     fetch(url)
-   .then(response => {
+ .then(response => {
         if (!response.ok) throw new Error("Cidade não encontrada");
         return response.json();
     })
-   .then(data => {
+ .then(data => {
         const clima = data.weather[0].main;
         const temperatura = Math.round(data.main.temp);
         const descricao = data.weather[0].description;
@@ -54,14 +52,14 @@ function buscarClima() {
 
         const player = document.getElementById('icone-clima');
         const animacoes = {
-            Clear: ehNoite? 'https://lottie.host/8c4b0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e/1a2b3c4d5e.json' : 'https://lottie.host/4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a/6g7h8i9j0k.json',
-            Clouds: ehNoite? 'https://lottie.host/2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e/3l4m5n6o7p.json' : 'https://lottie.host/9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d/q1w2e3r4t5.json',
-            Rain: 'https://lottie.host/1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e/y6u7i8o9p0.json',
-            Drizzle: 'https://lottie.host/1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e/y6u7i8o9p0.json',
-            Thunderstorm: 'https://lottie.host/7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c/a2s3d4f5g6.json',
-            Snow: 'https://lottie.host/3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f/z1x2c3v4b5.json',
-            Mist: 'https://lottie.host/9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a/n6m7b8v9c0.json',
-            Fog: 'https://lottie.host/9d0e1f2a-3b4c-5d6e-7f8a-9b0c1d2e3f4a/n6m7b8v9c0.json'
+            Clear: ehNoite? 'https://assets1.lottiefiles.com/packages/lf20_iwlmrg4v.json' : 'https://assets1.lottiefiles.com/packages/lf20_dgjK9D.json',
+            Clouds: ehNoite? 'https://assets1.lottiefiles.com/packages/lf20_64okjrrm.json' : 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json',
+            Rain: 'https://assets1.lottiefiles.com/packages/lf20_bco9p3mz.json',
+            Drizzle: 'https://assets1.lottiefiles.com/packages/lf20_bco9p3mz.json',
+            Thunderstorm: 'https://assets1.lottiefiles.com/packages/lf20_rPGSco.json',
+            Snow: 'https://assets1.lottiefiles.com/packages/lf20_kljxfos1.json',
+            Mist: 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json',
+            Fog: 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json'
         };
         player.load(animacoes[clima] || animacoes.Clear);
 
@@ -91,11 +89,12 @@ function buscarClima() {
         card.offsetHeight;
         card.style.animation = null;
     })
-   .catch(error => {
+ .catch(error => {
         alert(`Erro: ${error.message}`);
         card.classList.add('hidden');
     });
-} 
+}
+
 document.getElementById("cidade").addEventListener("keyup", function(e) {
     if (e.key === "Enter") buscarClima();
 });
