@@ -51,16 +51,16 @@ function buscarClima() {
         document.getElementById('umidade').textContent = `${umidade}%`;
 
         const player = document.getElementById('icone-clima');
-        const animacoes = {
-            Clear: ehNoite? 'https://assets1.lottiefiles.com/packages/lf20_iwlmrg4v.json' : 'https://assets1.lottiefiles.com/packages/lf20_dgjK9D.json',
-            Clouds: ehNoite? 'https://assets1.lottiefiles.com/packages/lf20_64okjrrm.json' : 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json',
-            Rain: 'https://assets1.lottiefiles.com/packages/lf20_bco9p3mz.json',
-            Drizzle: 'https://assets1.lottiefiles.com/packages/lf20_bco9p3mz.json',
-            Thunderstorm: 'https://assets1.lottiefiles.com/packages/lf20_rPGSco.json',
-            Snow: 'https://assets1.lottiefiles.com/packages/lf20_kljxfos1.json',
-            Mist: 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json',
-            Fog: 'https://assets1.lottiefiles.com/packages/lf20_kOfPKE.json'
-        };
+       const animacoes = {
+    Clear: ehNoite? 'https://assets2.lottiefiles.com/packages/lf20_iwlmrg4v.json' : 'https://assets2.lottiefiles.com/packages/lf20_dgjK9D.json',
+    Clouds: 'https://assets2.lottiefiles.com/packages/lf20_kOfPKE.json',
+    Rain: 'https://assets2.lottiefiles.com/packages/lf20_bco9p3mz.json',
+    Drizzle: 'https://assets2.lottiefiles.com/packages/lf20_bco9p3mz.json',
+    Thunderstorm: 'https://assets2.lottiefiles.com/packages/lf20_rPGSco.json',
+    Snow: 'https://assets2.lottiefiles.com/packages/lf20_kljxfos1.json',
+    Mist: 'https://assets2.lottiefiles.com/packages/lf20_kOfPKE.json',
+    Fog: 'https://assets2.lottiefiles.com/packages/lf20_kOfPKE.json'
+};
         player.load(animacoes[clima] || animacoes.Clear);
 
         const cores = {
