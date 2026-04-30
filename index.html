@@ -5,14 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clima Tempo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Previsão do Tempo</h1>
-        <input type="text" id="cidade" placeholder="Digite a cidade">
-        <button onclick="buscarClima()">Buscar</button>
-        <div id="resultado"></div>
-    </div>
+        <div class="search">
+            <input type="text" id="cidade" placeholder="Digite a cidade">
+            <button onclick="buscarClima()">Buscar</button>
+        </div>
+
+        <div id="resultado" class="weather-card hidden">
+            <lottie-player id="icone-clima" background="transparent" speed="1" loop autoplay></lottie-player>
+            <div class="info">
+                <h2 class="temp">--°</h2>
+                <p class="cidade">--</p>
+                <p class="descricao">--</p>
+            </div>
+            <div class="details-grid">
+                <div class="card">
+                    <span class="label">Sensação</span>
+                    <span class="value" id="sensacao">--°</span>
+                </div>
+                <div class="card">
+                    <span class="label">Umidade</span>
+                    <span class="value" id="umidade">--%</span>
+                </div>
+            </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
