@@ -1,3 +1,21 @@
+function gerarEstrelas(quantidade) {
+    const starsContainer = document.getElementById('stars');
+    starsContainer.innerHTML = '';
+    
+    for (let i = 0; i < quantidade; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        star.style.animationDuration = `${Math.random() * 2 + 2}s`;
+        starsContainer.appendChild(star);
+    }
+}
+function buscarClima() {
 function buscarClima() {
     const cidade = document.getElementById("cidade").value;
     const apiKey = "f2e80ca6bec842e973ef77bf5dcf3695";
@@ -15,7 +33,22 @@ function buscarClima() {
             if (!response.ok) throw new Error("Cidade não encontrada");
             return response.json();
         })
-     .then(data => {
+     .then(data => {// ... código que já atualiza texto, Lottie e fundo ...
+
+// NOVO: Ativa/desativa estrelas baseado se é noite
+const starsDiv = document.getElementById('stars');
+if (ehNoite) {
+    gerarEstrelas(100);
+    starsDiv.classList.add('active');
+} else {
+    starsDiv.classList.remove('active');
+    setTimeout(() => starsDiv.innerHTML = '', 800);
+}
+
+// 4. Mostra o card com animação
+const card = document.getElementById("resultado");
+card.classList.remove('hidden');
+// ... resto do código
             const clima = data.weather[0].main;
             const temperatura = Math.round(data.main.temp);
             const descricao = data.weather[0].description;
